@@ -1,0 +1,93 @@
+/*DS_2 : Array Implementation of stack*/
+
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+# define size 3
+
+int q[5],f=-1,r=-1;
+
+void main()
+{
+int c;
+void enq();
+void deq();
+void view();
+clrscr();
+do
+	{
+	printf("\n 1. Enqueue\n");
+	printf("\n 2. Dequeue\n");
+	printf("\n 3. View\n");
+	printf("\n 4. Exit\n");
+	printf("\n Enter the choice\n");
+	scanf("%d",&c);
+	switch(c)
+		{
+		case 1:
+		enq();
+		break;
+
+		case 2:
+		deq();
+		break;
+
+		case 3:
+		view();
+		break;
+
+		case 4:
+		exit(0);
+
+		break;
+		default:printf("Invalid Entry");
+		}
+	}while(c<=4);
+getch();
+}
+
+void enq()
+{
+int n;
+if(r==4)
+	printf("Queue is full\n");
+else
+	{
+	printf("\n Enter the element");
+	scanf("%d",&n);
+	r++;
+	q[r]=n;
+	if(r==0)
+		f=0;
+	}
+}
+
+void deq()
+{
+int n;
+if(f=-1)
+	printf("Queue is empty\n");
+else
+if(f==r)
+	f=r=-1;
+else
+	{
+	n=q[f];
+	printf("%d is removed from the queue\m",n);
+	f++;
+	}
+clrscr();
+}
+
+void view()
+{
+int i,t=f;
+if(f==-1)
+	printf("\n Queue is empty");
+else
+	{
+	printf("\n The elements in queue are\n");
+	for(i=t;i<=r;i++)
+	printf("\n %d \n",q[i]);
+}
+	}

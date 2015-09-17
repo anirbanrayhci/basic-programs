@@ -1,0 +1,123 @@
+/*DS_6 : Evaluation of postfix expression REG. 11UECS0011*/
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<ctype.h>
+#define Max 50
+
+struct postfix
+{
+int stack[Max];
+int top,nn;
+char *s;
+};
+
+void initpostfix(struct postfix *);
+void setexpr(struct postfix *,char *);
+void push(struct postfix *,int);
+int pop(struct postfix *);
+void calculate(struct postfix *);
+void show(struct postfix);
+
+void main()
+{
+struct postfix q;
+char expr[Max];
+clrscr();
+initpostfix(&q);
+printf("\n Enter the expression : ");
+gets(expr);
+setexpr(&q,expr);
+calculate(&q);
+show(q);
+getch();
+}
+
+void initpostfix(struct postfix *p)
+{
+p->top=-1;
+}
+
+void setexpr(struct postfix *p,char *str)
+{
+p->s=str;
+}
+
+void push(struct postfix *p,int item)
+{
+if(p->top==Max-1)
+	printf("Stack Full");
+else
+	{
+	p->top++;
+	p->stack[p->top]=item;
+	}
+}
+
+int pop(struct postfix *p)
+{
+int data;
+if(p->top==-1)
+	{
+	printf("Stack is empty");
+	return NULL;
+	}
+data=p->stack[p->top];
+p->top--;
+return(data);
+}
+
+void calculate(struct postfix *p)
+{
+int n1,n2,n3;
+while(*(p->s))
+	{
+	if(isdigit(*(p->s)))
+		{
+		p->nn=*(p->s)-'0';
+		push(p,p->nn);
+		}
+	else
+		{
+		n1=pop(p);
+		n2=pop(p);
+		switch(*(p->s))
+			{
+			case '+':
+			n3=n2+n1;
+			break;
+
+			case '-':
+			n3=n2-n1;
+			break;
+
+			case '*':
+			n3=n3*n1;
+			break;
+
+			case '/':
+			n3=n2/n1;
+			break;
+
+			default:
+			printf("Invalid Expression");
+			getch();
+			exit(0);
+			}
+		push(p,n3);
+		}
+	p->s++;
+	}
+}
+
+void show(struct postfix p)
+{
+p.nn=pop(&p);
+printf("\n Result is : %d",p.nn);
+}
+
+
+
+

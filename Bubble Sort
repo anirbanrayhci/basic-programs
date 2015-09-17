@@ -1,0 +1,82 @@
+/*DS_9A : Implementation of Bubble Sort REG No. - 11UECS0011 */
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+const int MAX=10;
+
+class array
+{
+private:
+int arr[MAX];
+int count;
+public:
+array();
+void add(int item);
+void sort();
+void display();
+};
+
+// initialises data member
+array::array()
+{
+count=0;
+for(int i=0;i<MAX;i++)
+	arr[i]=0;
+}
+
+//add a new element to array
+void array::add(int item)
+{
+if(count<MAX)
+	{
+	arr[count]=item;
+	count++;
+	}
+else
+	cout<<"\narray is full"<<endl;
+}
+
+//sorts array using selection sort method
+void array::sort()
+{
+int temp;
+for(int i=0;i<=count-2;i++)
+	{
+	for(int j=i+1;j<=count-1;j++)
+		{
+		if(arr[i]>arr[j])
+			{
+			temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+			}
+		}
+	}
+}
+
+//displays elements in array
+void array::display()
+{
+for(int i=0;i<count;i++)
+	cout<<arr[i]<<"\t";
+cout<<endl;
+}
+
+void main()
+{
+array a;
+clrscr();
+a.add(25);
+a.add(17);
+a.add(31);
+a.add(13);
+a.add(2);
+cout<<"\nBubble sort:\n";
+cout<<"\narray before sort:"<<endl;
+a.display();
+a.sort();
+cout<<"\narray after sort:"<<endl;
+a.display();
+getch();
+}

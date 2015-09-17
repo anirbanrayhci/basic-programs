@@ -1,0 +1,196 @@
+/* DS_7 : Implementation of Binary Search Tree REG. NO. - 11UECS0011 */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct BST
+{
+int data;
+struct BST *Left;
+struct BST *Right;
+};
+
+typedef struct BST* bst;
+
+void main()
+{
+int n,a;
+bst T=NULL;
+bst node;
+bst find(bst,int);
+bst findmin(bst);
+bst findmax(bst);
+bst Insert(bst,int);
+bst Delete(bst,int);
+void Inorder(bst);
+clrscr();
+do
+	{
+	printf("Operations in a Binary Search Tree\n");
+	printf("\n1. Insert\n");
+	printf("\n2. Find Min\n");
+	printf("\n3. Find Max\n");
+	printf("\n4. Find\n");
+	printf("\n5. Delete\n");
+	printf("\n6. Display (Inorder)\n");
+	printf("\n7. Exit\n");
+	printf("\n Enter your choice : ");
+	scanf("%d",&n);
+	switch(n)
+		{
+		case 1:
+		printf("\nEnter the number to insert : ");
+		scanf("%d",&a);
+		T=Insert(T,a);
+		break;
+
+		case 2:
+		node=findmin(T);
+		if(node==NULL)
+			printf("\nNULL TREE");
+		else
+			printf("\nThe Minimum element is : %d",node->data);
+		break;
+
+		case 3:
+		node=findmax(T);
+		if(node==NULL)
+			printf("\nNULL TREE");
+		else
+			printf("The Maximum element is : %d",node->data);
+		
+break;
+
+		case 4:
+		printf("\nEnter the number to find : ");
+		scanf("%d",&a);
+		node=find(T,a);
+		if(node==NULL)
+			printf("\n value not found");
+		else
+			printf("\n%d is found in : %ul",a,node);
+		break;
+
+		case 5:
+		printf("\nEnter the number to delete : ");
+		scanf("%d",&a);
+		T=Delete(T,a);
+		break;
+
+		case 6:
+		Inorder(T);
+		break;
+
+		case 7:
+		exit(0);
+
+		default:
+		printf("\nInvalid Input");
+		}
+	}while(n!=7);
+getch();
+}
+
+
+bst find(bst T,int e)
+{
+if(T==NULL)
+	return T;
+if(T->data<e)
+	T=find(T->Right,e);
+else if (T->data>e)
+	T=find(T->Left,e);
+return T;
+}
+
+bst findmin(bst T)
+{
+if(T==NULL)
+	return T;
+while(T->Left!=NULL)
+	{
+	T=T->Left;
+	return T;
+	}
+}
+
+bst findmax(bst T)
+{
+if(T==NULL)
+	return T;
+while(T->Right!=NULL)
+																											
+{
+	T=T->Right;
+	return T;
+	}
+}
+
+bst Insert(bst T,int e)
+{
+bst Temp;
+if(T==NULL)
+	{
+	Temp=malloc(sizeof(struct BST));
+	Temp->data=e;
+	Temp->Left=Temp->Right=NULL;
+	return Temp;
+	}
+if(T->data<e)
+	T->Right=Insert(T->Right,e);
+else if (T->data>e)
+	T->Left=Insert(T->Left,e);
+else
+	printf("Error");
+return T;
+}
+
+bst Delete(bst T,int e)
+{
+bst Temp;
+if(T==NULL)
+	{
+	printf("\n Value Not Found");
+	return T;
+	}
+if(T->data<e)
+	T->Right=Delete(T->Right,e);
+else if (T->data>e)
+	T->Left=Delete(T->Left,e);
+else
+	{
+	if(T->Left!=NULL&&T->Right!=NULL)
+		{
+		Temp=findmax(T->Left);
+		T->data=Temp->data;
+		T->Left=Delete(T->Left,Temp->data);
+		return T;
+		}
+	else if(T->Left!=NULL)
+		{
+		Temp=T->Left;
+		free(T);
+		return Temp;
+		}
+	else
+		{
+		Temp=T->Right;
+		free(T);
+		return Temp;
+		}
+																		
+
+
+}
+return T;
+}
+
+void Inorder(bst T)
+{
+if(T==NULL)
+	return;
+Inorder(T->Left);
+printf("\t%d",T->data);
+Inorder(T->Right);
+}

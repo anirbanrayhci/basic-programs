@@ -1,0 +1,108 @@
+/*DS_4 : Implementation of Linked List Stack ; REG.# 11UECS0011*/
+
+#include<stdio.h>
+#include<malloc.h>
+#include<stdlib.h>
+#define size 5
+
+int count;
+
+struct node
+{
+int info;
+struct node *link;
+};
+
+typedef struct node *NODE;
+
+NODE push(int item,NODE first)
+{
+NODE temp;
+if(count>=size)
+	{
+	printf("\n Stack Overflow\n");
+	return first;
+	}
+else
+	{
+	count++;
+	temp=(NODE)malloc(sizeof(struct node));
+	temp->info=item;
+	temp->link=first;
+	printf("\n %d inserted successfully\n",item);
+	return temp;
+	}
+}
+
+NODE pop(NODE first)
+{
+NODE temp;
+if(first==NULL)
+	{
+	printf("\nStack Underflow\n");
+	return NULL;
+	}
+else
+	{
+	temp=first;
+	first=first->link;
+	printf("\nElement poped is %d",temp->info);
+	free(temp);
+	count--;
+	return first;
+	}
+}
+void display (NODE first)
+{
+NODE temp=first;
+if(first==NULL)
+	{
+	printf("\n Stack is empty\n");
+	}
+else
+	{
+	printf("\n The content of the stack is :\n");
+	while(temp!=NULL)
+		{
+		printf("%d\n",temp->info);
+		temp=temp->link;
+		}
+	}
+}
+
+void main()
+{
+int choice,item,i;
+NODE first=NULL;
+count=0;
+clrscr();
+do
+	{
+	printf("\n 1. PUSH\n");
+	printf("\n 2. POP\n");
+	printf("\n 3. DISPLAY\n");
+	printf("\n 4. QUIT\n");
+	printf("\n Enter your choice :\n");
+	scanf("%d",&choice);
+	switch(choice)
+		{
+		case 1:
+		printf("\nEnter the item to be inserted:");
+		scanf("%d",&item);
+		first=push(item,first);
+		break;
+
+		case 2:
+		first=pop(first);
+		break;
+
+		case 3:
+		display(first);
+		break;
+
+		default:
+		exit(0);
+		}
+	}while(i!=4);
+getch();
+}

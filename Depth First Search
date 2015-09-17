@@ -1,0 +1,37 @@
+/* DS_8b : Implementation of Depth First Search REG. NO.- 11UECS0011 */
+
+#include<stdio.h>
+#include<conio.h>
+void searchfrom(int k);
+int n,visited[10],a[10][10];
+void main()
+{
+	int i,j;
+	clrscr();
+	printf("\n\n\t\t DEPTH FIRST SEARCH");
+	printf("\n\n Enter number of vertex	:");
+	scanf("%d",&n);
+	printf("\n\n Enter the adjacency matrix\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("\n DEPTH FIRST SEARCH	:");
+	for(i=1;i<=n;i++)
+		if(visited[i]==0)
+			searchfrom(i);
+	getch();
+}
+void searchfrom(int k)
+{
+	int i;
+	printf("\t%d",k);
+	visited [k]=1;
+	for(i=1;i<=n;i++)
+		if(visited[i]==0)
+			if(a[k][i]!=0)
+			searchfrom(i);
+}

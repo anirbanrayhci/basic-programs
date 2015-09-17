@@ -1,0 +1,97 @@
+/*DS_10 : Implementation of Heap Sort REG.# - 11UECS0011 */
+ 
+#include <iostream.h>
+#include <conio.h>
+ 
+class heap
+{
+int k[11],size;
+public:
+void getdata(void);
+friend void create_heap(heap &);
+friend void sort_heap(heap &);
+void showdata(void);
+};
+ 
+void heap :: getdata(void)
+{
+clrscr();
+cout<<"Enter the size of Array :-";
+cin>>size;
+cout<<"\nEnter "<<size<<" Elements\n";
+for(int i=1;i<=size;i++) //Creating heap from  index1 instead of index0
+   cin>>k[i];
+}
+ 
+void heap :: showdata(void)
+{
+clrscr();
+cout<<"\n\nHeap Function Output\n\n";
+for(int i=1;i<=size;i++)
+              cout<<k[i]<<endl;
+}
+ 
+ 
+void create_heap(heap &a)
+{
+int q,i,j,key;
+for(q=2;q<=a.size;q++)
+              {
+              i=q;
+              key=a.k[i];
+              j=i/2;
+              while(i>1 && key>a.k[j])
+                            {
+                            a.k[i]=a.k[j];
+                            i=j;
+                            j=i/2;
+                            if(j<1)
+                                          j=1;
+                            }
+              a.k[i]=key;
+              }
+}
+ 
+void sort_heap(heap &a)
+{
+int q,i,j,key,temp;
+for(q=a.size;q>=1;q--)
+              {
+              temp=a.k[1];
+              a.k[1]=a.k[q];
+              a.k[q]=temp;
+              i=1;
+              key=a.k[i];
+              j=2*i;
+              if(j+1 < q)
+                            {
+                            if(a.k[j+1] > a.k[j])
+                                          j++;
+                            }
+              while(j<=q-1 && key<a.k[j])
+                            {
+                            a.k[i]=a.k[j];
+                            i=j;
+                            j=2*i;
+                            if(j+1 < q)
+                                          {
+                                          if(a.k[j+1] > a.k[j])
+                                                        j++;
+                                          }
+                            else
+                            break;
+                            }
+              a.k[i]=key;
+              }
+}
+ 
+void main()
+{
+heap o1;
+clrscr();
+o1.getdata();
+create_heap(o1);
+sort_heap(o1);
+o1.showdata();
+getch();
+}

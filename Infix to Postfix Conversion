@@ -1,0 +1,124 @@
+/*DS_5 : Infix to Postfix Conversion REG. NO. - 11UECS0011*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+int top=-1;
+char s[50];
+
+push(char symbol)
+{
+s[++top]=symbol;
+return 0;
+}
+
+char pop()
+{
+return s[top--];
+}
+
+int preced(char symbol)
+{
+int value;
+switch(symbol)
+	{
+	case '$':
+
+	case '^':value=3;
+
+	case '/':
+
+	case '*':value=2;
+	break;
+
+	case '+':
+
+	case '-':value=1;
+	}
+return value;
+}
+
+int infixtopostfix(char infix[10],char postfix[10])
+{
+int i,j=0;
+char symbol,temp;
+for(i=0;infix[i]!='\0';i++)
+	{
+	symbol=infix[i];
+	if(isalnum(symbol))
+		{
+		postfix[j++]=symbol;
+		}
+	else
+		{
+		switch(symbol)
+			{
+			case '(':push(symbol);
+			break;
+
+			case ')':
+			temp=pop();
+			while(temp!='(')
+				{
+				postfix[j++]=temp;
+				temp=pop();
+				}
+			break;
+
+			case '+':
+
+			case '-':
+
+			case '*':
+
+			case '/':
+			if(top==-1||s[top]=='(')
+				{
+				push(symbol);
+				}
+			else
+				{
+
+				 while((top!=-1)&&(preced(s[top])>=preced(symbol)))
+					postfix[j++]=pop();
+				 push(symbol);
+				 }
+			break;
+
+			default:
+			printf("Invalid Expression");
+			return 0;
+			}
+		}
+	}
+
+while(top!=-1)
+	postfix[j++]=pop();
+postfix[j]='\0';
+return 1;
+}
+
+int main()
+{
+int flag;
+char infix[10],postfix[15];
+clrscr();
+printf("\nEnter the Infix Expression:");
+scanf("%s",infix);
+flag=infixtopostfix(infix,postfix);
+
+if(flag==1)
+	{
+	printf("\nPostfix Expression is:%s\n\n",postfix);
+	}
+
+else
+	{
+	printf("\nError");
+	return 1;
+	}
+getch();
+}
+
+
+

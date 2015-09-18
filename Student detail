@@ -1,0 +1,42 @@
+#include<iostream.h> 
+#include<stdio.h> 
+
+class student()
+{
+int roll_no;
+char name[21];
+char class[9];
+int m1, m2, m3, m4, m5, agg;
+float p;
+void calc( );
+public :
+void readmarks( ); void displaymarks( );
+};
+void student :: readmarks( )
+{
+cout << "Enter Roll No.”;
+tin >> roll_no;
+cout << "\nEnter Name”;
+gets(name);
+cout <<"\nclass”;
+gets(class);
+cout << "\n Enter marks of 5 subjects
+cin >> ml >> "\n" >> m2 >> "\n" >> m3 >> "\n" >> m4 >> "\n" >> m5; 
+calc()
+}
+void student :: calc()
+{
+agg = ml + m2 + m3 + m4 + m5; p = (agg * 100)/500;
+return p;
+}
+void student :: displaymarks()
+{
+cout << "Name: << name;
+cout << 'AnClass " << class;
+cout <<"\n	No. : " << roll_no;
+cout << "\nM1 = " << m1; cout << "\nM2 = " << m2; 
+cout << 'AnM3 = " << m3; cout << 'AnM4 = " << m4; cout << "\nM5 = " << m5;
+cout << 'AnAggrerate = " << agg;
+cout << "\nPercentage of marks	<< “p <<” ”	<<”%”;
+}
+ 

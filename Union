@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+union emp
+{
+char name[10];
+int idno;
+float salary;
+};
+void main()
+{
+union emp desc;
+clrscr();
+strcpy(desc.name,"anirban");
+printf("\nemployee name:%s",desc.name);
+desc.idno=10;
+printf("\n employee idno:%d",desc.idno);
+desc.salary=100000;
+printf("\n employee salary :%f",desc.salary);
+getch();
+}

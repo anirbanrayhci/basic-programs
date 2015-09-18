@@ -1,0 +1,28 @@
+#include<iostream.h> 
+#include<stdio.h>
+class BOOK
+{
+int BOOK_NO;
+char BOOK_TITLE[20]; float PRICE;
+float TOTAL_COST(int N)
+{
+float TOTAL;
+TOTAL = N * PRICE; return TOTAL;
+{
+public:
+void INPUT( )
+{
+cout << 'AnEnter Book No. cin >> BOOK_NO;
+cout << "\nEnter Book Title gets(BOOK TITLE);
+cout << "\nEnter Price
+cin >> PRICE;
+}
+void PURCHASE( )
+{
+int n;
+float TOT;
+cout << "\nEnter the number of copies to be purchased cin >> n;
+TOT = TOTAL_COST(n);
+cout << "\nTotal Amount is : " << TOT;
+}
+};

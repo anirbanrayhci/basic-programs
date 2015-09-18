@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+struct std
+{
+int rno,marks;
+char name[10];
+}
+s;
+void main()
+{
+clrscr();
+printf("\n\n\t Enter student rollno,name,marks");
+scanf("%d%s%d",&s.rno,&s.name,&s.marks);
+printf("\n\n\t Student details are:%d %s %d",s.rno,s.name,s.marks);
+getch();
+}

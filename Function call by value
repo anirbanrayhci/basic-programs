@@ -1,0 +1,32 @@
+#include<iostream.h>
+#include<conio.h>
+int add(int x,int y)
+{return(x+y);}
+float add(int x,float y)
+{return(x+y);}
+float add(float x,int y)
+{return(x+y);}
+float add(float x,float y)
+{return(x+y);}
+void main()
+{int a,b;
+float g,h;
+clrscr();
+cout<<"\n\n Enter the first integer value :";
+cin>>a;
+cout<<"\n\n Enter the second integer value :";
+cin>>b;
+cout<<"\n\n Enter the first float value :";
+cin>>g;
+cout<<"\n\n Enter the second float value :";
+cin>>h;
+cout<<"\n\t Calling add(int,int)";
+cout<<add(a,b);
+cout<<"\n\t Calling add(int,float)";
+cout<<add(a,h);
+cout<<"\n\t Calling add(float,int)";
+cout<<add(g,b);
+cout<<"\n\t Calling add(float,float)";
+cout<<add(g,h);
+getch();
+}

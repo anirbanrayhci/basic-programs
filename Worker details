@@ -1,0 +1,53 @@
+#include<iostream.h>
+#include<stdio.h>
+class worker
+{
+char wname[26];
+float hrwrk, wgrate, totwage;
+void calcwg( );
+public :
+void in_data( );
+void out data
+};
+void worker :: in_data( )
+{
+cout << "Enter worker's name
+gets(wname);
+cout << "Writer hours of working
+cin >> hrwrk;
+cout << 'AnEnter wagerate per hour
+cin >> wgrate;
+calcwg( );
+}
+void worker :: calcwg( )
+{
+totwg = hrwrk * wgrate;
+return totwg;
+}
+void worker :: out data
+{
+cout << "Worker Name : <<" "<< wname; 
+cout << "\nHours of working : " <<" "<< hrwrk; 
+cout << "\nWagerate perhour: " <<" "<< wgrate; 
+cout << "\nTotal wage = " << " " << totwg;
+
+}
+
+
+Write a function in c++ to count the number of lower case alphabet present in a a text file "BOOK.TXT".
+
+
+Ans :
+int countlower( )
+{
+Ifstream fin("BOOK.TXT"); 
+char ch; int count = 0; 
+while (!fin.eof())
+{
+fin.get(ch);
+if(islower(ch))
+count ++;
+}
+fin.close(); return count;
+}
+ 

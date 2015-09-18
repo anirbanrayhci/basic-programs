@@ -1,0 +1,34 @@
+#include<iostream.h>
+#include<conio.h>
+class samp
+{
+public:
+int x,y;
+void getdata()
+{
+cout<<" Enter the value of x : ";
+cin>>x;
+cout<<" Enter the value of y : ";
+cin>>y;
+}
+void putdata()
+{
+cout<<"\nEntered value of x= "<<x;
+cout<<"\nEntered value of y= "<<y;
+}
+};
+void main()
+{
+samp a,b;
+clrscr();
+a.getdata();
+b.getdata();
+if(a.x==b.x&&a.y==b.y)
+cout<<" The entered objects are equal ";
+else
+cout<<" The entered objects are not equal ";
+a.putdata();
+b.putdata();
+getch();
+}
+

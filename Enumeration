@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<conio.h>
+#include<iostream.h>
+void main()
+{
+enum days{Sunday=1,Monday=2,Tuesday=3,Wednesday=4,Thursday=5,Friday=6, Saturday=7};
+int day,i=0;
+clrscr();
+printf("Enter the day of the week (1 to 7) : ");
+scanf("%d",&i);
+day=days(i);
+if(day==Sunday||day==Saturday)
+printf("\n Its a weekend");
+else
+printf("\n Its a weekday");
+getch();
+}

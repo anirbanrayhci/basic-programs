@@ -1,0 +1,28 @@
+#includ<iostream,h> 
+#include<conio.h> 
+
+void main( )
+{
+clrscr ( ),
+int a[ ] = {2,4,6,8,10,12,14,16,18,20};
+int n1, n2, posnl=0, posn2=0;
+cout << "Enter two numbers cin >> n1 >> n2;
+for(int i = 0: i < 10; i ++)
+{
+if(af[i] == n1) 
+posnl = i + 1; 
+if(a[i] ==n2) 
+posn2=i+ 1;
+}
+if(posnl > 0)
+cout << "Number FOUND... position=”<<” “<< posnl;
+else
+cout << "\n\n\nNumber NOT FOUND " << “ “;
+if(posn2 > 0)
+cout << "\n\n\nNumber FOUND …position =” <<” “ posn2;
+ else
+cout << "\n\n\nNumber NOT FOUND!!!" <<” “;
+getch();
+}
+
+ 

@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a,b,sum,*x,*y;
+int avg;
+clrscr();
+printf("Enter the value of a and b :");
+scanf("%d%d",&a,&b);
+x=&a;
+y=&b;
+sum=*x+*y;
+avg=sum/2;
+printf("\n Sum is %d",sum);
+printf("\n\n Avg is %d",avg);
+getch();
+}

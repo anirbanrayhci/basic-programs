@@ -1,0 +1,26 @@
+#includ<iostream,h> 
+#include<conio.h> 
+#include<stdio.h>
+#include<fstream.h>
+
+void main()
+{
+clrscr();
+char n, s[50]; int c = 0;
+ofstream file1("note.txt", ios : : out); 
+cout << "Enter a sentence”;
+gets(s);
+file1<< S;
+fi le1.close();
+ fstream f1;
+f1.open("note.txt", ios ::in); 
+while(!fl.eof())
+{
+f1.get(n);
+if(n==’ ‘)
+c ++;
+}
+cout << "No. of blank spaces”<< c;
+ f1.close();
+getch ()
+}
